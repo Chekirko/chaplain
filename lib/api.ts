@@ -3,8 +3,7 @@ import ROUTES from "@/constants/routes";
 import { fetchHandler } from "./handlers/fetch";
 import { IUser } from "@/database/user.model";
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const api = {
   auth: {
