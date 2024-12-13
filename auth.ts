@@ -4,7 +4,7 @@ import Google from "next-auth/providers/google";
 import { IUser } from "./database/user.model";
 import { api } from "./lib/api";
 import logger from "./lib/logger";
-import mongoose from "mongoose";
+import { isValidObjectId } from "./lib/utils";
 import { redirect } from "next/navigation";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -12,9 +12,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   callbacks: {
     async session({ session, token }) {
-      console.log("TOKEN IN SESSION:", token);
-      console.log("ORIGINAL SESSION:", session);
-      const isValidObjectId = mongoose.Types.ObjectId.isValid;
       if (token.sub && !isValidObjectId(token.sub)) {
         logger.error(`Invalid ObjectId: ${token.sub}`);
         redirect("/sign-in");
