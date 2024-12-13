@@ -4,18 +4,12 @@ import Google from "next-auth/providers/google";
 import { IUser } from "./database/user.model";
 import { api } from "./lib/api";
 import logger from "./lib/logger";
-import { isValidObjectId } from "./lib/utils";
-import { redirect } from "next/navigation";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: process.env.AUTH_SECRET,
   providers: [Google],
   callbacks: {
     async session({ session, token }) {
-      if (token.sub && !isValidObjectId(token.sub)) {
-        logger.error(`Invalid ObjectId: ${token.sub}`);
-        redirect("/sign-in");
-      }
       session.user.id = token.sub || (token.userId as string);
       return session;
     },
