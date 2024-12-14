@@ -26,7 +26,7 @@ export default async function Home() {
   const normalizedData = parseStringify(data);
   return (
     <>
-      <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
+      <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center overflow-x-auto">
         <h1 className="h1-bold text-dark100_light900">Всі поїздки</h1>
 
         <Link href="/new" className="flex justify-end max-sm:w-full">

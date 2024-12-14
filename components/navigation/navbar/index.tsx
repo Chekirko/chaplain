@@ -22,7 +22,7 @@ const Navbar = async () => {
         <Image src="/images/site-logo.svg" width={23} height={23} alt="logo" />
 
         <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900 max-sm:hidden">
-          Дім<span className="text-primary-500">Милосердя</span>
+          <span className="text-primary-500">Капелани</span>
         </p>
       </Link>
       {user?.role === "admin" && (
